@@ -14,6 +14,7 @@ import com.lucia.trucksmanagement.persistence.domain.Carrier;
 @Service
 public class CarrierService {
 
+	
 	@Resource(name="carrierDao")
 	private HibernateDaoImpl<Carrier, Long> carrierDao;
 	
