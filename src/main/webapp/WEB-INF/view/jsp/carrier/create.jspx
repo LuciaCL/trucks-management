@@ -1,0 +1,62 @@
+
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:form="http://www.springframework.org/tags/form" version="2.1">
+
+
+	<div class="createCarrierForm">
+
+	
+		<h4><b>Crear o editar transportista</b></h4>
+
+		<form:form commandName="carrierForm" class="form-horizontal">
+				
+			<fieldset>
+				<legend>Informacion general</legend>
+				
+				<div class="control-group">
+					<label class="control-label" for="dni">DNI</label>
+					<div class="controls">
+						<form:input id="" path="dni" placeholder="DNI del transportista"/>
+					</div>
+				</div>
+			
+				<div class="control-group">
+					<label class="control-label" for="name">Nombre</label>
+					<div class="controls">
+						<form:input id="name" path="name" placeholder="Nombre"/>
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label" for="address">Direccion</label>
+					<div class="controls">
+						<form:input id="address" path="address" placeholder="Direccion"/>
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label" for="telephone">Telefono</label>
+					<div class="controls">
+						<form:input id="telephone" path="telephone" placeholder="Telefono"/>
+					</div>
+				</div>
+				
+							
+			</fieldset>
+			
+			<form:hidden path="id" />
+			
+			<div class="form-actions">
+				<button type="submit" class="btn btn-info">Guardar</button>&#160;
+				<c:url var="listUrl" value="/carriers/list" />
+				<a href="${listUrl}" class="btn btn-info">Cancelar</a>
+			</div>
+			
+		</form:form>
+		
+	</div>
+
+</jsp:root>

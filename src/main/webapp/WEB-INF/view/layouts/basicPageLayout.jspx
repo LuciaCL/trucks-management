@@ -1,0 +1,58 @@
+
+
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	xmlns:tiles="http://tiles.apache.org/tags-tiles" version="2.0">
+
+<html id="ng-app">
+
+	<jsp:output doctype-root-element="HTML"
+		doctype-system="about:legacy-compat" />
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/client/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/client/css/main.css" />
+	
+	<title>Trucks Management - Main</title>
+	</head>
+	
+	<body>
+		<div class="container-fluid">
+			<div  class="logo row-fluid span12">
+				<h3>Gestion de transportes</h3>
+			</div>
+			<div class="mainWrapper row-fluid span12">
+				<div class="span2 menu">
+					<ul class="nav nav-list">
+  						<li class="nav-header">Principal</li>
+  						<c:url var="expensesUrl" value="/expenses/list" />
+  						<li><a href="${expensesUrl}">Gastos</a></li>
+  						<c:url var="journeysUrl" value="/journeys/list" />
+  						<li><a href="${journeysUrl}">Viajes</a></li>
+  						<c:url var="cintervalsUrl" value="/cintervals/list" />
+  						<li><a href="${cintervalsUrl}">Descansos</a></li>
+  						<li class="nav-header">Admin</li>
+  						<c:url var="camionesUrl" value="/trucks/list" />
+  						<li><a href="${camionesUrl}">Camiones</a></li>
+  						<c:url var="trailersUrl" value="/trailers/list" />
+  						<li><a href="${trailersUrl}">Trailers</a></li>
+  						 <c:url var="carriersUrl" value="/carriers/list"/>
+  						<li><a href="${carriersUrl}">Transportistas</a></li>
+					</ul>
+				</div>
+				<div class="span8 content">
+					<tiles:insertAttribute name="content" />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+</jsp:root>

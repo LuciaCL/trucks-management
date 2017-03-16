@@ -1,0 +1,66 @@
+
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:form="http://www.springframework.org/tags/form" version="2.1">
+
+
+	<div class="createExpenseForm">
+	
+		<h4><b>Gastos</b></h4>
+
+		<div class="pull-right">
+			<c:url var="newUrl" value="/expense/create" />
+			<a href="${newUrl}" class="btn btn-info">Nuevo</a>
+		</div>
+
+		<div class="searchbox pull-right">
+			<form>
+				<div class="input-append">
+  					<input class="x-large" id="appendedInputButton" type="text" />
+  					<button class="btn" type="button">Buscar</button>
+				</div>
+			</form>
+		</div>
+		
+		
+		
+		<div class="list">
+			
+			<table class="table table-striped">
+ 				<thead>
+	 				<th>Cost</th>
+	 				<th>Concepto </th>
+	 				<th>Concepto 2</th>
+	 				<th>Fecha</th>
+	 				<th>Transportista</th>
+	 				<th>Viaje</th>
+	 				<th>Camión</th>
+	 				<th>Trailer</th>
+	 				<th>Actions</th>
+ 				</thead>
+ 				
+ 				<tbody>
+ 					<c:forEach items="${expenses}" var="expense">
+ 						<tr>
+ 							<td>${expense.cost}</td>
+ 							<td>${expense.concept1}</td>
+ 							<td>${expense.concept2}</td>
+ 							<td>${expense.expenseDate}</td>
+ 							<td>${expense.carrierId}</td>
+ 							<td>${expense.truckId}</td>
+ 							<td>${expense.trailerId}</td>
+ 							
+ 							<td>
+ 								<a href="#"><i class="icon-edit">&#160;</i></a>&#160;
+ 								<i class="icon-remove">&#160;</i>
+ 							</td>
+ 						</tr>
+ 					</c:forEach>
+ 				</tbody>
+			</table>
+		</div>
+	</div>
+
+</jsp:root>

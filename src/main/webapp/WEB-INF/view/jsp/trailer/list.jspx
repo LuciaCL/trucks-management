@@ -1,0 +1,58 @@
+
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:form="http://www.springframework.org/tags/form" version="2.1">
+
+
+	<div class="createTrailerForm">
+	
+		<h4><b>Trailer</b></h4>
+
+		<div class="pull-right">
+			<c:url var="newUrl" value="/trailers/create" />
+			<a href="${newUrl}" class="btn btn-info">Nuevo</a>
+		</div>
+
+		<div class="searchbox pull-right">
+			<form>
+				<div class="input-append">
+  					<input class="x-large" id="appendedInputButton" type="text" />
+  					<button class="btn" type="button">Buscar</button>
+				</div>
+			</form>
+		</div>
+		
+		
+		
+		<div class="list">
+			
+			<table class="table table-striped">
+ 				<thead>
+	 				<th>Matricula</th>
+	 				<th>Marca</th>
+	 				<th>Modelo</th>
+	 				<th>Tara</th>
+	 				<th>Actions</th>
+ 				</thead>
+ 				
+ 				<tbody>
+ 					<c:forEach items="${trailers}" var="trailer">
+ 						<tr>
+ 							<td>${trailer.plateNumber}</td>
+ 							<td>${trailer.brand}</td>
+ 							<td>${trailer.model}</td>
+ 							<td>${trailer.tare}</td>
+ 							<td>
+ 								<a href="#"><i class="icon-edit">&#160;</i></a>&#160;
+ 								<i class="icon-remove">&#160;</i>
+ 							</td>
+ 						</tr>
+ 					</c:forEach>
+ 				</tbody>
+			</table>
+		</div>
+	</div>
+
+</jsp:root>

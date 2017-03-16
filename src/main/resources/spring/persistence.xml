@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+	<tx:annotation-driven/>
+    
+    <!-- Default Hibernate Transaction Manager -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- Activates the annotation driven transactions -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
+ 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties" ref="hibernateProperties"/>
+        <property name="mappingResources" ref="hibernateMappings"/>
+    </bean>
+
+    <bean id="hibernateMappings" class="org.springframework.beans.factory.config.ListFactoryBean">
+        <property name="sourceList">
+            <list>
+                <value>hibernate-mappings/Truck.hbm.xml</value>
+                <value>hibernate-mappings/Trailer.hbm.xml</value>
+                <value>hibernate-mappings/Carrier.hbm.xml</value>
+<!--                 <value>hibernate-mappings/CInterval.hbm.xml</value> -->
+<!--                 <value>hibernate-mappings/Customer.hbm.xml</value> -->
+<!--                 <value>hibernate-mappings/Expense.hbm.xml</value> -->
+<!--                 <value>hibernate-mappings/Journey.hbm.xml</value> -->
+<!--                 <value>hibernate-mappings/Section.hbm.xml</value>                 -->
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+    
+    <bean id="truckDao" class="com.lucia.trucksmanagement.persistence.dao.HibernateDaoImpl">
+        <property name="entityClass" value="com.lucia.trucksmanagement.persistence.domain.Truck"/>
+    </bean>
+    
+     <bean id="carrierDao" class="com.lucia.trucksmanagement.persistence.dao.HibernateDaoImpl">
+        <property name="entityClass" value="com.lucia.trucksmanagement.persistence.domain.Carrier"/>
+    </bean>
+    
+     <bean id="trailerDao" class="com.lucia.trucksmanagement.persistence.dao.HibernateDaoImpl">
+        <property name="entityClass" value="com.lucia.trucksmanagement.persistence.domain.Trailer"/>
+    </bean>
+    
+    <bean id="customerDao" class="com.lucia.trucksmanagement.persistence.dao.HibernateDaoImpl">
+        <property name="entityClass" value="com.lucia.trucksmanagement.persistence.domain.Customer"/>
+    </bean>
+    
+    <bean id="journeyDao" class="com.lucia.trucksmanagement.persistence.dao.HibernateDaoImpl">
+        <property name="entityClass" value="com.lucia.trucksmanagement.persistence.domain.Journey"/>
+    </bean>
+    
+    <bean id="sectionDao" class="com.lucia.trucksmanagement.persistence.dao.HibernateDaoImpl">
+        <property name="entityClass" value="com.lucia.trucksmanagement.persistence.domain.Section"/>
+    </bean>
+    
+    <bean id="expenseDao" class="com.lucia.trucksmanagement.persistence.dao.HibernateDaoImpl">
+        <property name="entityClass" value="com.lucia.trucksmanagement.persistence.domain.Expense"/>
+    </bean>
+    
+    <bean id="cIntervalDao" class="com.lucia.trucksmanagement.persistence.dao.HibernateDaoImpl">
+        <property name="entityClass" value="com.lucia.trucksmanagement.persistence.domain.CInterval"/>
+    </bean>
+</beans>

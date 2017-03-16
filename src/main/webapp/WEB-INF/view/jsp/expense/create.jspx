@@ -1,0 +1,62 @@
+
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:form="http://www.springframework.org/tags/form" version="2.1">
+
+
+	<div class="createExpenseForm">
+	
+		<h4><b>Crear o editar Gasto</b></h4>
+
+		<form:form commandName="expenseForm" class="form-horizontal">
+				
+			<fieldset>
+				<legend>Informacion general</legend>
+				
+				<div class="control-group">
+					<label class="control-label" for="cost">Coste</label>
+					<div class="controls">
+						<form:input id="" path="cost" placeholder="Coste del gasto"/>
+					</div>
+				</div>
+			
+				<div class="control-group">
+					<label class="control-label" for="brand">Coste</label>
+					<div class="controls">
+						<form:input id="concept1" path="concept1" placeholder="Concepto "/>
+					</div>
+					<div class="controls">
+						<form:input id="concept2" path="concept2" placeholder="Concepto 2"/>
+					</div>
+					<div class="controls">
+						<form:input id="expenseDate" path="expenseDate" placeholder="Fecha del Gasto"/>
+					</div>
+					<div class="controls">
+						<form:input id="carrierId" path="carierId" placeholder="Transportista"/>
+					</div>
+					<div class="controls">
+						<form:input id="journeyId" path="journeyId" placeholder="Numero del Viaje"/>
+					</div>
+					<div class="controls">
+						<form:input id="truckId" path="truckId" placeholder="Camión"/>
+					</div>
+					<div class="controls">
+						<form:input id="trailerId" path="trailerId" placeholder="Trailer"/>
+					</div>
+				</div>
+							
+			</fieldset>
+			
+			<form:hidden path="id" />
+			
+			<div class="form-actions">
+				<button type="submit" class="btn btn-info">Guardar</button>&#160;
+				<c:url var="listUrl" value="/expenses/list" />
+				<a href="${listUrl}" class="btn btn-info">Cancelar</a>
+			</div>
+			
+		</form:form>
+	</div>
+</jsp:root>

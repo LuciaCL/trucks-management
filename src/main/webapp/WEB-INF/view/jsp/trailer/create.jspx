@@ -1,0 +1,79 @@
+
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:form="http://www.springframework.org/tags/form" version="2.1">
+
+
+	<div class="createTruckForm">
+	
+		<h4><b>Crear o editar trailer</b></h4>
+
+		<form:form commandName="trailerForm" class="form-horizontal">
+				
+			<fieldset>
+				<legend>Informacion general</legend>
+				
+				<div class="control-group">
+					<label class="control-label" for="plateNumber">Matricula</label>
+					<div class="controls">
+						<form:input id="plateNumber" path="plateNumber" placeholder="Matricula del camion"/>
+					</div>
+				</div>
+			
+				<div class="control-group">
+					<label class="control-label" for="brand">Marca</label>
+					<div class="controls">
+						<form:input id="brand" path="brand" placeholder="Marca del camion"/>
+					</div>
+				</div>
+			
+				<div class="control-group">
+					<label class="control-label" for="model">Modelo</label>
+					<div class="controls">
+						<form:input id="model" path="model" placeholder="Modelo del camion"/>
+					</div>
+				</div>
+			</fieldset>
+			
+			
+			
+			<fieldset>
+				<legend>Dimensiones</legend>
+				<div class="control-group">
+					<label class="control-label" for="tare">Tara (kg)</label>
+					<div class="controls">
+						<form:input id="tare" path="tare" placeholder="Tara del camion"/>
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label" for="weight">Peso (kg)</label>
+					<div class="controls">
+						<form:input id="weight" path="weight" placeholder="Peso del camion"/>
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label" for="dimension">Largo (m)</label>
+					<div class="controls">
+						<form:input id="model" path="dimension" placeholder="Largo del camion"/>
+					</div>
+				</div>
+			</fieldset>
+			
+			
+			<form:hidden path="id" />
+			
+			<div class="form-actions">
+				<button type="submit" class="btn btn-info">Guardar</button>&#160;
+				<c:url var="listUrl" value="/trailers/list" />
+				<a href="${listUrl}" class="btn btn-info">Cancelar</a>
+			</div>
+			
+		</form:form>
+		
+	</div>
+
+</jsp:root>

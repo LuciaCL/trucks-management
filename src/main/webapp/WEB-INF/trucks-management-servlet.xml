@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+     <resources mapping="/client/**" location="/client/" />
+
+     
+     <beans:bean id="jacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+
+     <annotation-driven>
+        <mvc:message-converters>
+            <beans:ref bean="jacksonHttpMessageConverter"/>
+        </mvc:message-converters>
+     </annotation-driven>
+
+
+    <!--   Static view resolver for static html -->
+<!--     <beans:bean id="staticPagesViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+<!--         <beans:property name="prefix" value="/"/> -->
+<!--         <beans:property name="suffix" value=".html"/> -->
+<!--         <beans:property name="order" value="2" /> -->
+<!--     </beans:bean> -->
+
+    <!-- Controllers -->
+    <context:component-scan base-package="com.lucia.trucksmanagement.controller" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+    </context:component-scan>
+
+    <!-- Tiles3 files -->
+    <beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" id="tilesViewResolver">
+         <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+         <beans:property name="order" value="1" />
+    </beans:bean>
+
+    <beans:bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" id="tilesConfigurer">
+        <beans:property name="definitions">
+          <beans:list>
+            <!-- Layouts grouped in single Tiles file: *layouts.xml -->
+            <beans:value>/WEB-INF/view/layouts/*layouts.xml</beans:value>
+            <!-- Scan jsp directory searching Tiles configuration files -->
+            <beans:value>/WEB-INF/view/jsp/**/views.xml</beans:value>
+          </beans:list>
+        </beans:property>
+    </beans:bean>
+
+    <beans:bean id="viewNameTranslator"
+        class="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator" />
+
+    <beans:bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+          <beans:property name="paramName" value="langId" />
+    </beans:bean>
+
+    <beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+
+    <!-- interceptors for RequestMappingHandlerMapping -->
+    <mvc:interceptors>
+        <beans:ref bean="localeChangeInterceptor"/>
+    </mvc:interceptors>
+
+</beans:beans>

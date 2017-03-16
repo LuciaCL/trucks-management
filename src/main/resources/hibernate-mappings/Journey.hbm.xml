@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.lucia.trucksmanagement.persistence.domain.Carrier" table="carrier">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+        <property name="origin" column="origin" not-null="true"/>
+        <property name="destination" column="destination" />
+        <property name="priceKm" column="price_km" />
+        <property name="customerId" column="customer_id" />
+        <property name="description" column="description" />
+     </class>
+</hibernate-mapping>
