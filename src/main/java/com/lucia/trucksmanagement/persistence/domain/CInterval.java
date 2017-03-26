@@ -12,7 +12,7 @@ import com.lucia.trucksmanagement.persistence.dao.Identifiable;
 
 
 @Entity
-@Table(name="cInterval")
+@Table(name="c_interval")
 public class CInterval implements Identifiable<Long> {
 	//Intervals that need to do it the carrier.
 	

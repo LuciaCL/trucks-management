@@ -118,3 +118,6 @@ alter table journey modify column price_km double;
 
 --changeset david:script01:cs004
 alter table carrier modify column dni varchar(9) not null;
+
+--changeset lucia:script01:cs005
+alter table c_interval modify column id bigint;

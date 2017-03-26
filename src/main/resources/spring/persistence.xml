@@ -18,22 +18,7 @@
  	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="hibernateProperties" ref="hibernateProperties"/>
-        <property name="mappingResources" ref="hibernateMappings"/>
-    </bean>
-
-    <bean id="hibernateMappings" class="org.springframework.beans.factory.config.ListFactoryBean">
-        <property name="sourceList">
-            <list>
-                <value>hibernate-mappings/Truck.hbm.xml</value>
-                <value>hibernate-mappings/Trailer.hbm.xml</value>
-                <value>hibernate-mappings/Carrier.hbm.xml</value>
-<!--                 <value>hibernate-mappings/CInterval.hbm.xml</value> -->
-<!--                 <value>hibernate-mappings/Customer.hbm.xml</value> -->
-<!--                 <value>hibernate-mappings/Expense.hbm.xml</value> -->
-<!--                 <value>hibernate-mappings/Journey.hbm.xml</value> -->
-<!--                 <value>hibernate-mappings/Section.hbm.xml</value>                 -->
-            </list>
-        </property>
+        <property name="packagesToScan" value="com.lucia.trucksmanagement.persistence.domain"/>
     </bean>
 
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>

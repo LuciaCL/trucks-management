@@ -28,7 +28,7 @@
 		<oAuthVersion>20100527</oAuthVersion>
 		<springSecurityVersion>3.2.0.RELEASE</springSecurityVersion>
 		<hsqldbVersion>2.3.1</hsqldbVersion>
-		<conf>david</conf>
+		<conf>lucia</conf>
 	</properties>
 	<build>
 		<plugins>
